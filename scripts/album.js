@@ -28,6 +28,21 @@ var albumMarconi = {
   ]
 };
 
+var albumThird = {
+  name: 'Tom Third',
+  artist: 'Third Album',
+  label: 'Third Records',
+  year: '2016',
+  albumArtUrl: 'assets/images/album_covers/03.png',
+  songs: [
+    { name: 'Third One', length: '4:26' },
+    { name: 'Third Two', length: '3:14' },
+    { name: 'Third Three', length: '5:01' },
+    { name: 'Third Four', length: '3:21'},
+    { name: 'Third Five', length: '2:15'}
+  ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
   var template =
     '<tr class="album-view-song-item">'
@@ -41,11 +56,12 @@ var createSongRow = function(songNumber, songName, songLength) {
 
 };
 
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+
 var setCurrentAlbum = function(album) {
   var albumTitle = document.getElementsByClassName('album-view-title')[0];
   var albumArtist = document.getElementsByClassName('album-view-artist')[0];
   var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-  var albumImage = document.getElementsByClassName('album-cover-art')[0];
   var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
   albumTitle.firstChild.nodeValue = album.name;
@@ -62,4 +78,14 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
   setCurrentAlbum(albumPicasso);
+
+  var albums = [albumMarconi, albumThird, albumPicasso];
+  var index = 1;
+  albumImage.addEventListener('click', function(event) {
+    setCurrentAlbum(albums[index]);
+    index++;
+    if (index === albums.length) {
+      index = 0;
+    }
+  });
 };
