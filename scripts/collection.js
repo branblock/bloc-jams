@@ -19,7 +19,7 @@ var buildcollectionItemTemplate = function() {
 };
 
 $(window).load(function() {
-  var collectionContainer = $('.album_covers');
+  var $collectionContainer = $('.album_covers');
   $collectionContainer.empty();
   for (var i = 0; i < 12; i++) {
     var $newThumbnail = buildcollectionItemTemplate();
